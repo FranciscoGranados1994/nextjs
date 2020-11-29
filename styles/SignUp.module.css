@@ -1,0 +1,303 @@
+/* 
+SECTIONS
+
+1- Tooltip
+2- Stepper
+3- Cities input
+4- Phone input
+5- Textarea
+6- Buttons sections
+7- File input
+
+*/
+
+/* 1) Tooltip */
+.tooltip {
+  composes: div_tooltip from './General.module.css';
+}
+.right {
+  composes: right_tooltip from './General.module.css';
+}
+
+.a_example {
+  composes: label_small from './General.module.css';
+}
+
+/* 2-Steppers */
+.section_steps {
+  height: 130px;
+  position: relative;
+  display: grid;
+}
+.div_boxes {
+  height: 60px;
+  display: flex;
+  width: 80%;
+  margin: auto;
+  position: relative;
+}
+
+.div_box_1 {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 40px;
+  animation: mymove 2s;
+}
+.div_box_2 {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 40px;
+  animation: mymove 3s;
+}
+
+.div_pending {
+  background: grey;
+  width: 40px;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: white;
+}
+@keyframes mymove {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.div_step {
+  background: var(--blue);
+  width: 40px;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: white;
+}
+.h3_step {
+  font-size: 0.9rem;
+}
+.div_divider {
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  height: 1px;
+  background: rgb(214, 214, 214);
+}
+
+.div_steps_info {
+  height: 60px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.h3_number_step {
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 80%;
+  margin: auto;
+  color: rgb(172, 172, 172);
+  margin-top: 15px;
+}
+.h3_step_info {
+  height: 50%;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* 3- Cities input  */
+
+.div_inputs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  height: 70px;
+}
+
+.cities_container {
+  composes: input_small_container from './General.module.css';
+}
+.label_city {
+  line-height: 28px;
+  composes: label_small from './General.module.css';
+}
+
+.input_cities {
+  composes: input_small from './General.module.css';
+}
+
+.div_states {
+  position: absolute;
+  top: 32px;
+  left: 7vh;
+  width: 175px;
+  height: auto;
+  min-height: 50px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  border: 1px solid rgba(0, 0, 0, 0.205);
+  box-shadow: 0 2px 16px 0 rgba(69, 80, 206, 0.4);
+  border-radius: 10px;
+  z-index: 10;
+  background: white;
+}
+
+.div_state_option {
+  background: white;
+  height: 25px;
+  margin: 3px 0 3px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.div_state_option:first-child {
+  background: white;
+  height: 25px;
+  margin: 10px 0 3px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.div_state_option:first-child:hover {
+  background: rgba(231, 231, 231, 0.726);
+  height: 25px;
+  margin: 10px 0 3px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.div_state_option:hover {
+  background: rgba(231, 231, 231, 0.726);
+  height: 25px;
+  margin: 3px 0 3px 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.h2_states {
+  font-size: 0.8rem;
+  margin-left: 10px;
+  cursor: default;
+  font-weight: 500;
+  color: rgb(92, 92, 92);
+}
+
+/* 4 - Phone input*/
+
+.phone_container {
+  composes: input_small_container from './General.module.css';
+}
+.label_phone {
+  composes: label_small from './General.module.css';
+  line-height: 28px;
+}
+
+.input_phone {
+  composes: input_small from './General.module.css';
+}
+
+.span_error {
+  composes: message_error from './General.module.css';
+}
+
+/* 5 - Textarea */
+.textarea_container {
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.textarea_about {
+  composes: textarea_general from './General.module.css';
+}
+
+/* 6 - Buttons section */
+.div_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.button_save {
+  composes: button_active animation_update_color from './General.module.css';
+  margin-right: 10%;
+  cursor: pointer;
+}
+
+.button_skip {
+  composes: button_process animation_update_color from './General.module.css';
+
+  margin-right: 10%;
+}
+
+.span_skip {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 100px;
+  composes: label_small from './General.module.css';
+}
+.span_skip:hover {
+  color: black;
+}
+
+/* 7 - File input */
+.file_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 140px;
+}
+
+.img_file {
+  max-height: 70px;
+}
+.file {
+  position: relative;
+  margin-bottom: 20px;
+}
+.label_file {
+  background: white;
+  border: 1.5px solid #4550ce71;
+  border-radius: 3px;
+  padding: 5px 20px;
+  composes: label_small from './General.module.css';
+}
+.input_file {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  opacity: 0.01;
+  cursor: pointer;
+}
+.input_file:hover + label,
+.input_file:focus + label {
+  background: linear-gradient(90deg, #4550ce, #3985c5);
+  color: white;
+}

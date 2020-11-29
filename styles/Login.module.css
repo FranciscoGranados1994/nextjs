@@ -1,0 +1,379 @@
+/* Main component  */
+.container_form {
+  width: 60%;
+  height: 100vh;
+}
+
+/* second option  */
+.container_large {
+  width: 100%;
+  height: 100vh;
+  margin-top: 60px;
+  animation: increase_width 1s;
+}
+
+@keyframes increase_width {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Options section */
+.section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  line-height: 40px;
+  width: 100%;
+  height: 50px;
+  margin-top: 80px;
+}
+
+.anchor {
+  color: rgb(145, 143, 143);
+}
+
+.anchor_selected,
+.anchor:hover {
+  color: black;
+  cursor: default;
+}
+.anchor:first-child,
+.anchor_selected:first-child {
+  margin-left: 60px;
+}
+
+.anchor:nth-child(2),
+.anchor_selected:nth-child(2) {
+  margin-left: 140px;
+}
+
+.anchor:last-child,
+.anchor_selected:last-child {
+  margin-right: 60px;
+}
+
+/* Inputs login section */
+
+.container_center {
+  min-height: 600px;
+  height: 80%;
+  position: relative;
+}
+
+.form {
+}
+
+.section_signup {
+  height: 380px;
+  margin-top: 0px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: height 0.4s ease-out;
+}
+
+.section_login {
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: height 0.4s ease-out;
+}
+
+.section_reset {
+  height: 100px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: height 0.4s ease-out;
+}
+
+.div_login {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.div_login:first-child {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.div_login:last-child {
+  width: 100%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input {
+  composes: input_large from './General.module.css';
+  position: relative;
+}
+
+.input_wait {
+  composes: input_large from './General.module.css';
+  color: rgb(155, 153, 153);
+  background-color: rgb(243, 243, 243);
+  cursor: progress;
+  border-style: none;
+  transition: background-color 1s;
+}
+
+.input_error {
+  composes: input_large from './General.module.css';
+  color: rgb(92, 92, 92);
+  background-color: rgba(165, 0, 0, 0.08);
+  border: 1px solid rgba(165, 0, 0, 0.4);
+}
+
+.div_animation {
+  position: absolute;
+  top: -27px;
+  right: 14px;
+}
+
+/* example */
+
+.div_texts {
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.h3_considerations {
+  margin-left: 20px;
+}
+/*  */
+.tooltip {
+  composes: div_tooltip from './General.module.css';
+}
+
+.tooltip_up {
+  composes: div_tooltip_up from './General.module.css';
+}
+.right {
+  composes: right_tooltip from './General.module.css';
+}
+.right_up {
+  composes: right_tooltip_up from './General.module.css';
+}
+
+.a_example {
+  composes: label_small from './General.module.css';
+  text-decoration: none;
+  color: rgb(167, 167, 167);
+}
+/* Buttons section */
+.section_buttons {
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.button {
+  composes: button_active from './General.module.css';
+}
+
+.button:disabled {
+  background: rgba(165, 165, 165, 0.747);
+  box-shadow: transparent;
+}
+
+/* input disable */
+
+.div_states {
+  background: white;
+  width: 200px;
+  max-height: 100px;
+  border: 1px solid black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  font-size: 1rem;
+}
+
+.h2_states {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* error message from request */
+
+.div_error {
+  position: absolute;
+  bottom: 0.7rem;
+  left: 5vw;
+  font-size: 0.8rem;
+}
+
+
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 770px) {
+  .container_form {
+    position: relative;
+    width: 90%;
+    height: 100vh;
+  }
+  .anchor_selected,
+  .anchor {
+    font-size: 1rem;
+  }
+  .anchor:first-child,
+  .anchor_selected:first-child {
+    margin-left: 13%;
+  }
+
+  .anchor:nth-child(2),
+  .anchor_selected:nth-child(2) {
+    margin-left: 10%x;
+  }
+
+  .anchor:last-child,
+  .anchor_selected:last-child {
+    margin-right: 14%;
+  }
+  .div_animation{
+    position: absolute;
+    top: -27px;
+    right: 0%;
+  }
+}
+
+@media (min-width:770px) and (max-width: 900px) {
+  .container_form {
+    width: 90%;
+    height: 100vh;
+  }
+  .anchor_selected,
+  .anchor {
+    font-size: 1rem;
+  }
+  .anchor:first-child,
+  .anchor_selected:first-child {
+    margin-left: 13%;
+  }
+
+  .anchor:nth-child(2),
+  .anchor_selected:nth-child(2) {
+    margin-left: 10%;
+  }
+
+  .anchor:last-child,
+  .anchor_selected:last-child {
+    margin-right: 14%;
+  }
+  .div_animation{
+    position: absolute;
+    top: -27px;
+    right: 0%;
+  }
+}
+@media (min-width: 900px) and (max-width: 2000px) {
+  .anchor_selected,
+  .anchor {
+    font-size: 1rem;
+  }
+  .anchor:first-child,
+  .anchor_selected:first-child {
+    margin-left: 13%;
+  }
+
+  .anchor:nth-child(2),
+  .anchor_selected:nth-child(2) {
+    margin-left: 10%;
+  }
+
+  .anchor:last-child,
+  .anchor_selected:last-child {
+    margin-right: 14%;
+  }
+  .div_animation{
+    position: absolute;
+    top: -27px;
+    right: 14px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .container_form {
+  }
+  .section {
+    margin-top: 150px;
+    width: 80%;
+    margin: auto;
+    margin-top: 120px;
+    margin-bottom: 20px;
+  }
+
+  .container_center {
+    height: 800px;
+  }
+  .anchor_selected,
+  .anchor {
+    font-size: 1.6rem;
+  }
+  .anchor:first-child,
+  .anchor_selected:first-child {
+    margin-left: 4%;
+  }
+
+  .anchor:nth-child(2),
+  .anchor_selected:nth-child(2) {
+    margin-left: 20%;
+  }
+
+  .anchor:last-child,
+  .anchor_selected:last-child {
+    margin-right: 4%;
+  }
+  .form {
+    height: 100%;
+  }
+  .section_signup {
+    height: 85%;
+  }
+  .section_reset {
+    height: 25%;
+  }
+  .section_login {
+    height: 43%;
+  }
+  .div_login {
+    min-height: 150px;
+    margin-top: 0;
+  }
+  .div_login:first-child,
+  .div_login:last-child {
+    min-height: 150px;
+  }
+  .div_login:first-child {
+    margin-top: 50px;
+  }
+  .div_animation{
+    position: absolute;
+    top: 0px;
+    right: 2%;
+    width: 100px;
+  }
+}
