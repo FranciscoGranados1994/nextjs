@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { AuthRequest } from '../services/Auth.service';
 import {
   KeyType,
   stateDataInterface,
@@ -142,22 +143,40 @@ export const useValidation = (
   }
 
   async function handleSignUpRequest(e) {
-    e.preventDefault();
-
     /*function that handles data and makes http request to sign up*/
+    e.preventDefault();
     await setIsLoading(true);
 
-    /* return 200 status */
+    const userData = {
+      email: state.email.value,
+      username: state.lastName.value,
+      password: state.password.value,
+      password_confirmation: state.passwordComfirmation.value,
+    };
 
-    /* pending: make the pettion */
+    const response = await AuthRequest.signUp(userData);
+    
+    const { status, data } = response;
 
-    await setSignUpSection(true);
+    if (status === 201) {
+      console.log('Respònse ok => ', response);
+      setSignUpSection(true);
+      return;
+    } else {
+      const propertyWrong = Object.keys(data)[0];
+      const errorMessage = data[propertyWrong][0];
 
-    /* return errors */
-    /*   await setErrorsRequest({
-          'email':'this email is already used by another user'
-      })  
-      await setIsLoading(false)  */
+      setErrorsRequest({
+        [propertyWrong]: errorMessage,
+      });
+
+      setIsLoading(false);
+      setDisable(true)
+
+      console.log('response Error => ', data, propertyWrong, errorMessage);
+
+    }
+
 
     return;
   }

@@ -26,7 +26,7 @@ const FormatRules: React.FC = ({ type, topPosition, condition }) => {
         <a className={style.a_example}> Verify the format</a>
       </div>
 
-      <div className={topPosition? style.right_up:style.right}>
+      <div className={topPosition ? style.right_up : style.right}>
         <div className={style.text_content}>
           <h3 className={style.h3_considerations}>Consideration : </h3>
           {type === 'email' ? (
@@ -66,6 +66,14 @@ const TooltipErrors: React.FC = ({ errorsRequest }) => {
   ) : null;
 };
 
+const ErrorMessage: React.FC = ({ condition, message }) => {
+  return condition ? (
+    <div className={style.div_error_response}>
+     {message}
+    </div>
+  ) : null
+}
+
 const CheckerAnimation: React.FC = ({ condition }) => {
   const checkAnimation = {
     loop: false,
@@ -78,7 +86,7 @@ const CheckerAnimation: React.FC = ({ condition }) => {
 
   return condition === null ? (
     <div className={style.div_animation}>
-      <Lottie options={checkAnimation} height={100} width={50}/>
+      <Lottie options={checkAnimation} height={100} width={50} />
     </div>
   ) : null;
 };
@@ -110,6 +118,10 @@ const AuthSection: React.FC = ({
     }
     return styleClass;
   }
+
+  useEffect(() => {
+    console.log('Error Request => ', errorsRequest)
+  }, [errorsRequest])
 
   return (
     <div>
@@ -152,7 +164,7 @@ const AuthSection: React.FC = ({
               <input
                 placeholder="Email"
                 name="email"
-                className={setInputStyle()}
+                className={isLoading ? style.input_wait : style.input}
                 onChange={handleData}
                 autoComplete="off"
                 onBlur={checkOnBlur}
@@ -160,12 +172,14 @@ const AuthSection: React.FC = ({
                 disabled={isLoading}
               />
               <FormatRules condition={errors.email} type="email" topPosition />
-              <TooltipErrors errorsRequest={errorsRequest} />
+    {/*           <TooltipErrors errorsRequest={errorsRequest} /> */}
 
-              {/* render check animation */}
-              {errorsRequest === null ? (
-                <CheckerAnimation condition={errors.email} />
-              ) : null}
+              <CheckerAnimation condition={errors.email} />
+
+              
+             {errorsRequest !== null ? (
+                <h2  className={style.div_error_response}>{errorsRequest.email}</h2>
+                ) : null} 
             </div>
             <div className={style.div_login}>
               <input
@@ -183,7 +197,19 @@ const AuthSection: React.FC = ({
                 type="password"
                 topPosition
               />
-              <CheckerAnimation condition={errors.password} />
+               <CheckerAnimation condition={errors.password} />
+
+               {errorsRequest !== null ? (
+                <h2  className={style.div_error_response}>{errorsRequest.password}</h2>
+                ) : null} 
+
+
+              {errorsRequest !== null ? (
+                <h2  className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+                ) : null} 
+
+
+
             </div>
 
             <div className={style.div_login}>
@@ -203,6 +229,18 @@ const AuthSection: React.FC = ({
                 topPosition
               />
               <CheckerAnimation condition={errors.passwordComfirmation} />
+
+              {errorsRequest !== null ? (
+                <h2  className={style.div_error_response}>{errorsRequest.password_confirmation}</h2>
+                ) : null} 
+
+
+              {errorsRequest !== null ? (
+                <h2  className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+                ) : null} 
+
+
+
             </div>
 
             <div className={style.div_login}>
@@ -222,6 +260,11 @@ const AuthSection: React.FC = ({
                 topPosition
               />
               <CheckerAnimation condition={errors.lastName} />
+ 
+              {errorsRequest !== null ? (
+                <h2 className={style.div_error_response}>{errorsRequest.username}</h2>
+              ) : null} 
+
             </div>
           </section>
           <section className={style.section_buttons}>
@@ -445,8 +488,8 @@ const Login: React.FC = () => {
           errorsRequest={errorsRequest}
         />
       ) : (
-        <SignUpSecondModule />
-      )}
+          <SignUpSecondModule />
+        )}
     </div>
   );
 };

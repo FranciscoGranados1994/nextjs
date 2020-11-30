@@ -226,6 +226,15 @@
 }
 
 
+.div_error_response{
+  position: absolute;
+  color:red;
+  bottom: 0;
+  left: 15%;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
 
 /* RESPONSIVE DESIGN */
 
