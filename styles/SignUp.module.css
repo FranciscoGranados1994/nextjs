@@ -19,8 +19,17 @@ SECTIONS
   composes: right_tooltip from './General.module.css';
 }
 
+.div_texts{
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  bottom: -5px;
+  left: 10px;
+}
+
 .a_example {
   composes: label_small from './General.module.css';
+
 }
 
 /* 2-Steppers */
@@ -111,11 +120,12 @@ SECTIONS
 .h3_step_info {
   height: 50%;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 0.9rem;
   width: 80%;
   margin: auto;
   display: flex;
   align-items: flex-end;
+  color: rgb(131, 131, 131);
 }
 
 /* 3- Cities input  */
@@ -127,10 +137,12 @@ SECTIONS
   width: 80%;
   margin: auto;
   height: 70px;
+  margin-bottom: 1vh;
 }
 
 .cities_container {
   composes: input_small_container from './General.module.css';
+  position: relative;
 }
 .label_city {
   line-height: 28px;
@@ -208,6 +220,7 @@ SECTIONS
 
 .phone_container {
   composes: input_small_container from './General.module.css';
+  position: relative;
 }
 .label_phone {
   composes: label_small from './General.module.css';
@@ -229,7 +242,7 @@ SECTIONS
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 5vh;
 }
 
 .textarea_about {
@@ -240,6 +253,7 @@ SECTIONS
 .div_buttons {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 .button_save {
   composes: button_active animation_update_color from './General.module.css';
@@ -249,7 +263,6 @@ SECTIONS
 
 .button_skip {
   composes: button_process animation_update_color from './General.module.css';
-
   margin-right: 10%;
 }
 
@@ -271,7 +284,8 @@ SECTIONS
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  height: 140px;
+  height: 130px;
+  margin-bottom: 1vh;
 }
 
 .img_file {
@@ -298,6 +312,154 @@ SECTIONS
 }
 .input_file:hover + label,
 .input_file:focus + label {
-  background: linear-gradient(90deg, #4550ce, #3985c5);
   color: white;
+  background: var(--blue);
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 770px) {
+  .div_inputs {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .file_container {
+    height: 120px;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 900px) {
+  .div_inputs {
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .file_container {
+    height: 150px;
+    margin-bottom: 30px;
+  }
+}
+@media (min-width: 900px) and (max-width: 1800px) {
+  .div_inputs {
+  }
+  .file_container {
+  }
+  .textarea_container {
+  }
+}
+
+@media (min-width: 1800px) {
+  .section_steps {
+    height: 20vh;
+  }
+  .div_boxes {
+    height: 60%;
+  }
+  .div_box_1 {
+    width: 200px;
+  }
+  .div_box_2 {
+    width: 200px;
+  }
+  .div_pending {
+    min-width: 40px;
+    width: 4vw;
+    height: 80%;
+    font-size: 1.5rem;
+  }
+  .div_step {
+    min-width: 40px;
+    width: 4vw;
+    height: 80%;
+    font-size: 1.5rem;
+  }
+  .h3_step {
+    font-size: 1.5rem;
+  }
+  .div_steps_info {
+    height: 100%;
+  }
+  .h3_number_step {
+    font-size: 1rem;
+  }
+  .h3_step_info {
+    font-size: 1.2rem;
+  }
+  .file_container {
+    height: 18vh;
+  }
+  .div_inputs {
+    height: 12vh;
+  }
+  .textarea_container {
+    height: 15vh;
+  }
+  .div_buttons {
+    height: 120px;
+    height: 10vh;
+  }
+  .label_file {
+    padding: 10px 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .phone_container {
+    width: 16vw;
+    display: flex;
+    justify-content: center;
+  }
+  .label_phone {
+    font-size: 0.9rem;
+    height: 70%;
+    margin-right: 10px;
+    line-height: 35px;
+  }
+
+  .input_phone {
+    height: 70%;
+    width: 80%;
+  }
+  /* cities */
+
+  .cities_container {
+
+    width: 16vw;
+    display: flex;
+    justify-content: center;
+  }
+  .label_city {
+    font-size: 0.9rem;
+    height: 70%;
+    margin-right: 10px;
+    line-height: 35px;
+  }
+
+  .input_cities {
+
+    height: 70%;
+    width: 80%;
+  }
+
+  .div_states {
+  }
+
+  .div_state_option {
+  }
+  .div_state_option:first-child {
+  }
+
+  .div_state_option:first-child:hover {
+  }
+
+  .div_state_option:hover {
+  }
+  .h2_states {
+  }
+  .a_example{
+    bottom: 50px;
+  }
 }

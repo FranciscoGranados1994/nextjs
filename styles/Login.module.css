@@ -227,12 +227,13 @@
 
 
 .div_error_response{
+  composes: label_small from './General.module.css';
   position: absolute;
-  color:red;
-  bottom: 0;
+  color:rgba(243, 73, 73, 0.815);
+  bottom: 10%;
   left: 15%;
-  font-size: 0.8rem;
-  font-weight: 400;
+  outline: none;
+  
 }
 
 

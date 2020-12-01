@@ -18,9 +18,9 @@ import {
 import Spiner from '../general/Spinner';
 import SignUpSecondModule from '../Authentication/SignupModule';
 
-const FormatRules: React.FC = ({ type, topPosition, condition }) => {
+const FormatRules: React.FC = ({ type, topPosition, condition, errorRequest }) => {
   /* tootltip wich render a series of rules to follow */
-  return condition ? (
+  return condition && !errorRequest ? (
     <div className={topPosition ? style.tooltip_up : style.tooltip}>
       <div className={style.div_texts}>
         <a className={style.a_example}> Verify the format</a>
@@ -69,7 +69,7 @@ const TooltipErrors: React.FC = ({ errorsRequest }) => {
 const ErrorMessage: React.FC = ({ condition, message }) => {
   return condition ? (
     <div className={style.div_error_response}>
-     {message}
+      {message}
     </div>
   ) : null
 }
@@ -171,15 +171,15 @@ const AuthSection: React.FC = ({
                 value={state.email.value}
                 disabled={isLoading}
               />
-              <FormatRules condition={errors.email} type="email" topPosition />
-    {/*           <TooltipErrors errorsRequest={errorsRequest} /> */}
+              <FormatRules condition={errors.email} type="email" errorRequest={errorsRequest} topPosition />
+              {/*           <TooltipErrors errorsRequest={errorsRequest} /> */}
 
               <CheckerAnimation condition={errors.email} />
 
-              
-             {errorsRequest !== null ? (
-                <h2  className={style.div_error_response}>{errorsRequest.email}</h2>
-                ) : null} 
+
+              {errorsRequest !== null ? (
+                <h2 className={style.div_error_response}>{errorsRequest.email}</h2>
+              ) : null}
             </div>
             <div className={style.div_login}>
               <input
@@ -196,17 +196,18 @@ const AuthSection: React.FC = ({
                 condition={errors.password}
                 type="password"
                 topPosition
+                errorRequest={errorsRequest}
               />
-               <CheckerAnimation condition={errors.password} />
+              <CheckerAnimation condition={errors.password} />
 
-               {errorsRequest !== null ? (
-                <h2  className={style.div_error_response}>{errorsRequest.password}</h2>
-                ) : null} 
+              {errorsRequest !== null ? (
+                <h2 className={style.div_error_response}>{errorsRequest.password}</h2>
+              ) : null}
 
 
               {errorsRequest !== null ? (
-                <h2  className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
-                ) : null} 
+                <h2 className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+              ) : null}
 
 
 
@@ -227,17 +228,18 @@ const AuthSection: React.FC = ({
                 condition={errors.passwordComfirmation}
                 type="passwordComfirmation"
                 topPosition
+                errorRequest={errorsRequest}
               />
               <CheckerAnimation condition={errors.passwordComfirmation} />
 
               {errorsRequest !== null ? (
-                <h2  className={style.div_error_response}>{errorsRequest.password_confirmation}</h2>
-                ) : null} 
+                <h2 className={style.div_error_response}>{errorsRequest.password_confirmation}</h2>
+              ) : null}
 
 
               {errorsRequest !== null ? (
-                <h2  className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
-                ) : null} 
+                <h2 className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+              ) : null}
 
 
 
@@ -245,25 +247,26 @@ const AuthSection: React.FC = ({
 
             <div className={style.div_login}>
               <input
-                name="lastName"
-                placeholder="Last Name"
+                name="username"
+                placeholder="Username"
                 className={isLoading ? style.input_wait : style.input}
                 onChange={handleData}
                 autoComplete="off"
                 onBlur={checkOnBlur}
-                value={state.lastName.value}
+                value={state.username.value}
                 disabled={isLoading}
               />
               <FormatRules
-                condition={errors.lastName}
+                condition={errors.username}
                 type="lastname"
                 topPosition
+                errorRequest={errorsRequest}
               />
-              <CheckerAnimation condition={errors.lastName} />
- 
+              <CheckerAnimation condition={errors.username} />
+
               {errorsRequest !== null ? (
                 <h2 className={style.div_error_response}>{errorsRequest.username}</h2>
-              ) : null} 
+              ) : null}
 
             </div>
           </section>
@@ -289,7 +292,7 @@ const Login: React.FC = () => {
     email: { value: '', error: '' },
     password: { value: '', error: '' },
     passwordComfirmation: { value: '', error: '' },
-    lastName: { value: '', error: '' },
+    username: { value: '', error: '' },
   });
 
   const [validateSchema, setValidateSchema] = useState<
@@ -316,11 +319,11 @@ const Login: React.FC = () => {
         error: 'The password format is wrong',
       },
     },
-    lastName: {
+    username: {
       required: true,
       validator: {
         regexp: /^[a-zA-Z]+$/,
-        error: 'The last name format is wrong',
+        error: 'The username format is wrong',
       },
     },
   });
@@ -373,7 +376,7 @@ const Login: React.FC = () => {
             error: 'The password format is wrong',
           },
         },
-        lastName: {
+        username: {
           required: true,
           validator: {
             regexp: /^[a-zA-Z]+$/,
@@ -385,7 +388,7 @@ const Login: React.FC = () => {
         email: { value: '', error: '' },
         password: { value: '', error: '' },
         passwordComfirmation: { value: '', error: '' },
-        lastName: { value: '', error: '' },
+        username: { value: '', error: '' },
       }),
     ]);
   }
@@ -415,7 +418,7 @@ const Login: React.FC = () => {
         email: { value: '', error: '' },
         password: { value: '', error: '' },
         passwordComfirmation: { value: '', error: '' },
-        lastName: { value: '', error: '' },
+        username: { value: '', error: '' },
       }),
     ]);
   }
@@ -438,7 +441,7 @@ const Login: React.FC = () => {
         email: { value: '', error: '' },
         password: { value: '', error: '' },
         passwordComfirmation: { value: '', error: '' },
-        lastName: { value: '', error: '' },
+        username: { value: '', error: '' },
       }),
     ]);
   }

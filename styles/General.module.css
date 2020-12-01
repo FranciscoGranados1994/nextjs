@@ -16,8 +16,9 @@
   background: var(--blue);
   box-shadow: 0 2px 16px 0 rgba(149, 149, 149, 0.4);
   min-width: 120px;
+  max-width: 200px;
   width: 35%;
-  min-height: 40px;
+  min-height: 42px;
   max-height: 60px;
   height: 4vh;
   display: flex;
@@ -34,8 +35,10 @@
   box-shadow: 0 2px 16px 0 rgba(64, 66, 92, 0.4);
   border-radius: 3px;
   font-size: 0.8rem;
-  width: 25%;
-  min-height: 40px;
+  min-width: 120px;
+  max-width: 200px;
+  width: 35%;
+  min-height: 42px;
   max-height: 60px;
   height: 4vh;
   display: flex;
@@ -266,7 +269,7 @@
     max-height: 120px;
   }
 }
-@media (min-width: 900px) and (max-width: 2000px) {
+@media (min-width: 900px) and (max-width: 1800px) {
   .input_large {
   }
   .label_small {
@@ -284,7 +287,7 @@
   }
 }
 
-@media (min-width: 2000px) {
+@media (min-width: 1800px) {
   .input_large {
     font-size: 1rem;
     height: 80px;
@@ -298,13 +301,28 @@
     font-size: 1.3rem;
   }
   .button_active {
-    font-size: 1.5rem;
+    
+    font-size: 1rem;
+    max-height: 80px;
+    height: 55px;
+    min-width: 250px;
+    max-width: 500px;
+    width: 20%;
+  }
+  .button_process{
+    font-size: 1rem;
+    max-height: 80px;
+    height: 55px;
+    min-width: 250px;
+    max-width: 500px;
+    width: 20%;
   }
   .label_small {
     font-size: 1.1rem;
   }
   .div_tooltip_up {
     bottom: 20%;
+
   }
   .right_tooltip_up {
     min-width: 350px;

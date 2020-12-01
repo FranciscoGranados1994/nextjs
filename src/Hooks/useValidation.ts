@@ -149,7 +149,7 @@ export const useValidation = (
 
     const userData = {
       email: state.email.value,
-      username: state.lastName.value,
+      username: state.username.value,
       password: state.password.value,
       password_confirmation: state.passwordComfirmation.value,
     };
@@ -163,13 +163,30 @@ export const useValidation = (
       setSignUpSection(true);
       return;
     } else {
-      const propertyWrong = Object.keys(data)[0];
+      let propertyWrong = Object.keys(data)[0];
       const errorMessage = data[propertyWrong][0];
+
+      if(propertyWrong==='non_field_errors'){
+        propertyWrong='password'
+
+        setErrors({ 
+          ...errors,
+          'password':errorMessage,
+          'passwordComfirmation':errorMessage
+        })
+      }else{
+         setErrors({ 
+        ...errors,
+        [propertyWrong]:errorMessage
+      })
+
+      }
 
       setErrorsRequest({
         [propertyWrong]: errorMessage,
       });
 
+     
       setIsLoading(false);
       setDisable(true)
 
