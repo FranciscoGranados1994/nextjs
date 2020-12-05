@@ -1,8 +1,6 @@
 import { useState } from 'react';
 
 export const useUserData = () => {
-  const [userData, setUserData] = useState();
-  const [phoneError, setPhoneError] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [description, setDesciption] = useState('');
   const [city, setCity] = useState('');

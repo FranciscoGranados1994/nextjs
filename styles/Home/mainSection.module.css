@@ -1,0 +1,23 @@
+.main {
+  background-color: rgb(247, 248, 252);
+  min-height: 90vh;
+  height: auto;
+}
+
+.section_circle {
+  position: relative;
+  width: 70%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-flow: dense;
+;
+}
+
+.circle_sm {
+}
+
+.circle_lg {
+  height: auto;
+  grid-row: span 3;
+}

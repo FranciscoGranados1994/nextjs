@@ -1,11 +1,19 @@
 import React from 'react'
+import Navbar from '../src/components/general/Navbar'
+import Footer from '../src/components/general/Footer'
+import MainSection from '../src/components/Home/main.section'
 
-
-const Home: React.FC =()=>{
+const Home: React.FC = () => {
     return (
-        <div>
-            Home section
-        </div>
+        <section>
+            <Navbar />
+            {/* this content is going to change according to rul route */}
+
+            <MainSection />
+            {/*  */}
+
+            <Footer />
+        </section>
     )
 }
 

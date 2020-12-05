@@ -14,7 +14,6 @@ export const useValidation = (
   const [state, setState] = useState<Record<KeyType, stateDataInterface>>(
     stateSchema
   );
-  const [isDirty, setIsDirty] = useState<boolean>(false);
   const [disable, setDisable] = useState<boolean>(true);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [values, setValues] = useState<Record<string, string>>({});
@@ -30,22 +29,23 @@ export const useValidation = (
   useEffect(() => {
     const validateErrors = async () => {
       /* verify whether all vinput were typed  */
-
-      let noDirty: boolean;
-      let noErrors: boolean;
       let dirtyValue: boolean;
       let errorValue: string;
 
-      noDirty = await Object.keys(validationSchema).some((property) => {
-        dirtyValue = dirty[property];
-        return !dirtyValue;
-      });
+      const noDirty: boolean = await Object.keys(validationSchema).some(
+        (property) => {
+          dirtyValue = dirty[property];
+          return !dirtyValue;
+        }
+      );
 
       /* verify whether there are errors */
-      noErrors = await Object.keys(validationSchema).some((property) => {
-        errorValue = errors[property];
-        return errorValue !== null;
-      });
+      const noErrors: boolean = await Object.keys(validationSchema).some(
+        (property) => {
+          errorValue = errors[property];
+          return errorValue !== null;
+        }
+      );
 
       await setDisable(!noDirty && !noErrors ? false : true);
     };
@@ -155,7 +155,7 @@ export const useValidation = (
     };
 
     const response = await AuthRequest.signUp(userData);
-    
+    console.log('RESPONSE', response);
     const { status, data } = response;
 
     if (status === 201) {
@@ -166,34 +166,30 @@ export const useValidation = (
       let propertyWrong = Object.keys(data)[0];
       const errorMessage = data[propertyWrong][0];
 
-      if(propertyWrong==='non_field_errors'){
-        propertyWrong='password'
+      if (propertyWrong === 'non_field_errors') {
+        propertyWrong = 'password';
 
-        setErrors({ 
+        setErrors({
           ...errors,
-          'password':errorMessage,
-          'passwordComfirmation':errorMessage
-        })
-      }else{
-         setErrors({ 
-        ...errors,
-        [propertyWrong]:errorMessage
-      })
-
+          password: errorMessage,
+          passwordComfirmation: errorMessage,
+        });
+      } else {
+        setErrors({
+          ...errors,
+          [propertyWrong]: errorMessage,
+        });
       }
 
       setErrorsRequest({
         [propertyWrong]: errorMessage,
       });
 
-     
       setIsLoading(false);
-      setDisable(true)
+      setDisable(true);
 
       console.log('response Error => ', data, propertyWrong, errorMessage);
-
     }
-
 
     return;
   }

@@ -1,11 +1,9 @@
 /* React */
-import React, { useState, useEffect } from 'react';
-
+import React, { useState } from 'react';
 /* Style */
 import style from '../../../styles/Login.module.css';
 import Lottie from 'react-lottie';
 import checkstatus from '../../../styles/statics/checkstatus.json';
-
 /* Hooks */
 import { useValidation } from '../../Hooks/useValidation';
 import {
@@ -13,12 +11,16 @@ import {
   KeyType,
   validationInterface,
 } from '../../Types/hooks.types';
-
 /* Components */
 import Spiner from '../general/Spinner';
 import SignUpSecondModule from '../Authentication/SignupModule';
 
-const FormatRules: React.FC = ({ type, topPosition, condition, errorRequest }) => {
+const FormatRules: React.FC = ({
+  type,
+  topPosition,
+  condition,
+  errorRequest,
+}) => {
   /* tootltip wich render a series of rules to follow */
   return condition && !errorRequest ? (
     <div className={topPosition ? style.tooltip_up : style.tooltip}>
@@ -50,7 +52,7 @@ const FormatRules: React.FC = ({ type, topPosition, condition, errorRequest }) =
 
           {type === 'firstname' || type === 'lastname' ? (
             <ul>
-              <li>You can't use number or special character</li>
+              <li>You cant use number or special character</li>
             </ul>
           ) : null}
         </div>
@@ -59,20 +61,6 @@ const FormatRules: React.FC = ({ type, topPosition, condition, errorRequest }) =
     </div>
   ) : null;
 };
-
-const TooltipErrors: React.FC = ({ errorsRequest }) => {
-  return errorsRequest !== null ? (
-    <div className={style.div_error}>{errorsRequest.email}</div>
-  ) : null;
-};
-
-const ErrorMessage: React.FC = ({ condition, message }) => {
-  return condition ? (
-    <div className={style.div_error_response}>
-      {message}
-    </div>
-  ) : null
-}
 
 const CheckerAnimation: React.FC = ({ condition }) => {
   const checkAnimation = {
@@ -106,30 +94,22 @@ const AuthSection: React.FC = ({
 }) => {
   /* render the first section for authentication where is login,signup and reset section */
 
-  function setInputStyle() {
-    /* set style for inpus that can handle errors */
+  function setAnchorStyle(condition) {
     let styleClass;
-    if (errorsRequest !== null) {
-      styleClass = style.input_error;
-    } else if (isLoading) {
-      styleClass = style.input_wait;
+    if (currentSection === condition) {
+      styleClass = style.anchor_selected;
     } else {
-      styleClass = style.input;
+      styleClass = style.anchor;
     }
+
     return styleClass;
   }
-
-  useEffect(() => {
-    console.log('Error Request => ', errorsRequest)
-  }, [errorsRequest])
 
   return (
     <div>
       <section className={style.section}>
         <a
-          className={
-            currentSection === 'Sign Up' ? style.anchor_selected : style.anchor
-          }
+          className={setAnchorStyle('Sign Up')}
           onClick={() => {
             setSection('signup');
           }}
@@ -137,9 +117,7 @@ const AuthSection: React.FC = ({
           Sign up
         </a>
         <a
-          className={
-            currentSection === 'Log In' ? style.anchor_selected : style.anchor
-          }
+          className={setAnchorStyle('Log In')}
           onClick={() => {
             setSection('login');
           }}
@@ -147,9 +125,7 @@ const AuthSection: React.FC = ({
           Log in
         </a>
         <a
-          className={
-            currentSection === 'Reset' ? style.anchor_selected : style.anchor
-          }
+          className={setAnchorStyle('Reset')}
           onClick={() => {
             setSection('reset');
           }}
@@ -171,16 +147,22 @@ const AuthSection: React.FC = ({
                 value={state.email.value}
                 disabled={isLoading}
               />
-              <FormatRules condition={errors.email} type="email" errorRequest={errorsRequest} topPosition />
-              {/*           <TooltipErrors errorsRequest={errorsRequest} /> */}
+              <FormatRules
+                condition={errors.email}
+                type="email"
+                errorRequest={errorsRequest}
+                topPosition
+              />
 
               <CheckerAnimation condition={errors.email} />
 
-
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.email}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.email}
+                </h2>
               ) : null}
             </div>
+
             <div className={style.div_login}>
               <input
                 name="password"
@@ -192,25 +174,27 @@ const AuthSection: React.FC = ({
                 value={state.password.value}
                 disabled={isLoading}
               />
+
               <FormatRules
                 condition={errors.password}
                 type="password"
                 topPosition
                 errorRequest={errorsRequest}
               />
+
               <CheckerAnimation condition={errors.password} />
 
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.password}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.password}
+                </h2>
               ) : null}
-
 
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.non_field_errors}
+                </h2>
               ) : null}
-
-
-
             </div>
 
             <div className={style.div_login}>
@@ -233,16 +217,16 @@ const AuthSection: React.FC = ({
               <CheckerAnimation condition={errors.passwordComfirmation} />
 
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.password_confirmation}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.password_confirmation}
+                </h2>
               ) : null}
-
 
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.non_field_errors}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.non_field_errors}
+                </h2>
               ) : null}
-
-
-
             </div>
 
             <div className={style.div_login}>
@@ -265,9 +249,10 @@ const AuthSection: React.FC = ({
               <CheckerAnimation condition={errors.username} />
 
               {errorsRequest !== null ? (
-                <h2 className={style.div_error_response}>{errorsRequest.username}</h2>
+                <h2 className={style.div_error_response}>
+                  {errorsRequest.username}
+                </h2>
               ) : null}
-
             </div>
           </section>
           <section className={style.section_buttons}>
@@ -491,8 +476,8 @@ const Login: React.FC = () => {
           errorsRequest={errorsRequest}
         />
       ) : (
-          <SignUpSecondModule />
-        )}
+        <SignUpSecondModule />
+      )}
     </div>
   );
 };

@@ -76,8 +76,6 @@ const Carousel: React.FC = () => {
     return () => clearInterval(intervalProcess);
   }, [stop]);
 
-
-
   async function setOption(option: number) {
     await setNumberOption(option);
 
@@ -115,30 +113,50 @@ const Carousel: React.FC = () => {
   return (
     <div className={style.main}>
       {/* background that will change */}
-      <div className={sections.first ? style.color_1_active : style.color_1}> </div>
-      <div className={sections.second ? style.color_2_active : style.color_2}></div>
-      <div className={sections.third ? style.color_3_active : style.color_3}></div>
-      <div className={sections.fourth ? style.color_4_active : style.color_4}></div>
+      <div className={sections.first ? style.color_1_active : style.color_1}>
+        {' '}
+      </div>
+      <div
+        className={sections.second ? style.color_2_active : style.color_2}
+      ></div>
+      <div
+        className={sections.third ? style.color_3_active : style.color_3}
+      ></div>
+      <div
+        className={sections.fourth ? style.color_4_active : style.color_4}
+      ></div>
 
       {/* changes carousel's option */}
       <div className={style.div_container}>
         <div className={style.div_options}>
           <div
-            className={sections.first ? style.div_option_active : style.div_option}
-            onClick={() => { setOption(1); }}
+            className={
+              sections.first ? style.div_option_active : style.div_option
+            }
+            onClick={() => {
+              setOption(1);
+            }}
           ></div>
           <div
-            className={sections.second ? style.div_option_active : style.div_option}
-            onClick={() => { setOption(2); }}
+            className={
+              sections.second ? style.div_option_active : style.div_option
+            }
+            onClick={() => {
+              setOption(2);
+            }}
           ></div>
           <div
-            className={sections.third ? style.div_option_active : style.div_option}
+            className={
+              sections.third ? style.div_option_active : style.div_option
+            }
             onClick={() => {
               setOption(3);
             }}
           ></div>
           <div
-            className={sections.fourth ? style.div_option_active : style.div_option}
+            className={
+              sections.fourth ? style.div_option_active : style.div_option
+            }
             onClick={() => {
               setOption(4);
             }}
@@ -148,26 +166,34 @@ const Carousel: React.FC = () => {
       {/* section according to carousel's section active */}
       <div className={style.div_carousel}>
         <div
-          className={sections.first ? style.section_one_active : style.section_one}
+          className={
+            sections.first ? style.section_one_active : style.section_one
+          }
         >
           Primera opcion de texto
           <Map className={style.logo} />
         </div>
         <div
-          className={sections.second ? style.section_two_active : style.section_two}
+          className={
+            sections.second ? style.section_two_active : style.section_two
+          }
         >
           second opcion de texto
           <Hire className={style.logo} />
         </div>
         <div
-          className={sections.third ? style.section_two_active : style.section_two}
+          className={
+            sections.third ? style.section_two_active : style.section_two
+          }
         >
           Tercera opcion de texto
           <Traveling className={style.logo} />
         </div>
 
         <div
-          className={sections.fourth ? style.section_two_active : style.section_two}
+          className={
+            sections.fourth ? style.section_two_active : style.section_two
+          }
         >
           Cuarta opcion de texto
           <Navigation className={style.logo} />
@@ -195,7 +221,9 @@ const BackgroundMobile: React.FC = () => {
     <div className={style.div_mobile}>
       <Traveling className={style.logotipo} />
       <h1 className={style.h1_title}>C-RIDE</h1>
-      <p className={style.p_slang}>Crea y comparte rides atraves de la ciudad</p>
+      <p className={style.p_slang}>
+        Crea y comparte rides atraves de la ciudad
+      </p>
       <button
         className={style.button_display}
         onClick={() => {
@@ -208,13 +236,11 @@ const BackgroundMobile: React.FC = () => {
   );
 };
 
-
 const BackGround: React.FC = () => {
   const [widthScreen, setWith] = useState<number>();
   const [activeCarousel, setActiveCarousel] = useState<boolean>(true);
 
   useEffect(() => {
-
     /* display a different background according to screen resolution*/
     setWith(window.innerWidth);
 
@@ -234,7 +260,6 @@ const BackGround: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleSize);
     };
-
   }, []);
 
   return (
