@@ -8,7 +8,7 @@ export const useUserData = () => {
   const [activeAnimation, setActiveAnimation] = useState<boolean>();
 
   function handleImage(e) {
-    const reader = new FileReader();
+    /* const reader = new FileReader();
 
     reader.onload = () => {
       if (reader.readyState === 2) {
@@ -18,7 +18,7 @@ export const useUserData = () => {
     };
 
     reader.readAsDataURL(e.target.files[0]);
-  }
+ */  }
 
   function handleCity(city: string): void {
     setActiveAnimation(true);
