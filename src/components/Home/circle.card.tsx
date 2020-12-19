@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import style from '../../../styles/Home/circlesCard.module.css';
 
-const CircleCard: React.FC = ({ name, styleClass, publicCircle }) => {
-  useEffect(() => {
-    console.log('styukleclass', styleClass);
-  }, []);
+interface CardInterface{
+  name:string, 
+  styleClass:boolean, 
+  publicCircle:boolean
+}
+
+const CircleCard: React.FC<CardInterface> = ({ name, styleClass, publicCircle }) => {
+
   return (
     <div className={styleClass ? style.main_card_lg : style.main_card}>
       <div className={publicCircle ? style.div_left : style.div_left_public}>

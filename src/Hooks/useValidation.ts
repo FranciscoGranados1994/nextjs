@@ -5,7 +5,7 @@ import {
   KeyType,
   stateDataInterface,
   validationInterface,
-} from '../Hooks/types/hooks.types';
+} from '../Global/Types/hooks.types';
 
 export const useValidation = (
   stateSchema: Record<KeyType, stateDataInterface>,
@@ -133,11 +133,49 @@ export const useValidation = (
     e.preventDefault();
 
     await setIsLoading(true);
-    router.push('/Home');
+
+    const userData = {
+      email: state.email.value,
+      password: state.password.value,
+    };
+
+    const response = await AuthRequest.login(userData);
+
+  
+
+    const { status, data } = response;
+ 
+    if (status === 201) {
+      router.push('/Home');
+      return;
+    } else {
+      console.log('error response', data);
+      let propertyWrong = Object.keys(data)[0];
+      const errorMessage = data[propertyWrong][0];
+
+     
+      propertyWrong = 'password';
+
+      setErrors({
+        ...errors,
+        password: errorMessage,
+      });
+      
+      setErrorsRequest({
+        [propertyWrong]: errorMessage,
+      });
+
+      setIsLoading(false);
+      setDisable(true);
+      setIsLoading(false);
+      setDisable(true);
+    }
+ 
   }
 
   async function handleResetRequest(e) {
     e.preventDefault();
+    console.log('state', state);
 
     await setIsLoading(true);
   }
@@ -155,11 +193,9 @@ export const useValidation = (
     };
 
     const response = await AuthRequest.signUp(userData);
-    console.log('RESPONSE', response);
     const { status, data } = response;
 
     if (status === 201) {
-      console.log('Respònse ok => ', response);
       setSignUpSection(true);
       return;
     } else {
@@ -187,8 +223,6 @@ export const useValidation = (
 
       setIsLoading(false);
       setDisable(true);
-
-      console.log('response Error => ', data, propertyWrong, errorMessage);
     }
 
     return;

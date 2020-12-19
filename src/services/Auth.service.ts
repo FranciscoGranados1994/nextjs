@@ -12,4 +12,11 @@ export const AuthRequest = {
     );
     return petition;
   },
+  login: async(userData) =>{
+    const petition = await Request.post(
+      'http://localhost:8000/users/login/',
+        userData
+    )
+    return petition
+  }
 };

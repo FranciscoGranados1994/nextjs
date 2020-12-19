@@ -9,6 +9,7 @@ export default function Home() {
       <Head>
         <title>Cride App</title>
         <link rel="icon" href="/favicon.ico" />
+        <script src="https://kit.fontawesome.com/fddec20652.js" crossOrigin="anonymous"></script>
       </Head>
       <main className={styles.main}>
         <Background />

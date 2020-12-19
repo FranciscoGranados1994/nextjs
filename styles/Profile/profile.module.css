@@ -1,0 +1,28 @@
+.main{
+    margin-top: 50px;
+    height: 90vh;
+    width: 100%;
+}
+
+.section_info{
+    position: relative;
+    width: 70%;
+    height: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+}
+
+.div_edit{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    background: yellow;
+}
+.div_reputation{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    background: green;
+}

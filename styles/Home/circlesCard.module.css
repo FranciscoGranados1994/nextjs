@@ -1,28 +1,21 @@
 .main_card {
   position: relative;
   background: rgb(255, 255, 255);
-  width: 450px;
-  max-width: 450px;
+  width: 100%;
   height: 175px;
   border-radius: 15px;
   box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
-  /* extras to test */
-  margin-bottom: 50px;  
-  margin-right: 50px;
+  margin-bottom: 50px;
 }
 
 .main_card_lg {
-    position: relative;
-    background: rgb(255, 255, 255);
-    width: 450px;
-    max-width: 450px;
-    height:400px;
-    border-radius: 15px;
-    box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
-    /* extras to test */
-  }
-  
-
+  position: relative;
+  background: rgb(255, 255, 255);
+  width: 100%;
+  height: 400px;
+  border-radius: 15px;
+  box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
+}
 
 .div_left {
   position: absolute;
@@ -35,27 +28,31 @@
   box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 9px 0px;
 }
 .div_left_public {
-    position: absolute;
-    background: linear-gradient(180deg, #f64121, #1b619b);
-    top: 0;
-    left: 0;
-    width: 35%;
-    height: 100%;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 9px 0px;
-  }
+  position: absolute;
+  background: linear-gradient(180deg, #35868d, #b0dcff);
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px 4px 9px 0px;
+}
 .div_right {
   position: absolute;
   width: 65%;
   height: 100%;
   right: 0;
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .div_details {
   position: relative;
   width: 100%;
-  height: 50%;
+  height: 65%;
   background: white;
+  border-top-right-radius: 15px;
 }
 .h2_title {
   text-align: center;
@@ -64,9 +61,31 @@
   text-align: center;
 }
 .div_button {
+  height: 30%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 .button {
   composes: button_active from '../General.module.css';
+  margin-bottom: 10px;
+}
+
+/* responsive design */
+@media (max-width: 770px) {
+  .main_card {
+    margin-bottom: 0px;
+  }
+  .main_card_lg {
+    height: 174px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .main_card {
+    height: 300px;
+  }
+  .main_card_lg {
+    height: 650px;
+  }
 }

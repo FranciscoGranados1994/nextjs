@@ -1,0 +1,62 @@
+.main::before {
+  content: '';
+  position: absolute;
+  border: 18px solid transparent;
+  box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
+  top: -34px;
+  right: 90px;
+  opacity: 1;
+}
+.main_inactive {
+  position: absolute;
+  top: 50px;
+  right: -300%;
+  width: 300px;
+  height: 400px;
+  z-index: 10;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
+  opacity: 0;
+  transition: opacity 0s;
+}
+.main {
+  position: absolute;
+  top: 50px;
+  right: 15%;
+  width: 300px;
+  height: 400px;
+  z-index: 10;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid rgb(207, 207, 207);
+  box-shadow: rgba(36, 37, 38, 0.04) 4px 4px 15px 0px;
+  opacity: 1;
+  transition: opacity 0.4s;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.div_node{
+    background: yellow;
+}
+.div_text{
+    background: red;
+}
+.div_main_data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 15%;
+    height: 40%;
+}
+.span_data{
+    composes: label_md from '../General.module.css'
+}
+
+.button_edit{
+    composes: button_active from '../General.module.css'
+}

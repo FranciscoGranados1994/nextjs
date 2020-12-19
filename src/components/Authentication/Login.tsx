@@ -10,10 +10,12 @@ import {
   stateDataInterface,
   KeyType,
   validationInterface,
-} from '../../Types/hooks.types';
+} from '../../Global/Types/hooks.types';
+import { loginValidator, singUpValidator, resetValidator } from '../../Global/validator'
 /* Components */
 import Spiner from '../general/Spinner';
 import SignUpSecondModule from '../Authentication/SignupModule';
+import InputPassword from '../general/inputPassword'
 
 const FormatRules: React.FC = ({
   type,
@@ -164,7 +166,15 @@ const AuthSection: React.FC = ({
             </div>
 
             <div className={style.div_login}>
-              <input
+              <InputPassword
+                name="password"
+                placeholder="Password"
+                handleData={handleData}
+                isLoading={isLoading}
+                checkOnBlur={checkOnBlur}
+                value={state.password.value}
+              />
+              {/*    <input
                 name="password"
                 placeholder="Password"
                 className={isLoading ? style.input_wait : style.input}
@@ -173,7 +183,7 @@ const AuthSection: React.FC = ({
                 onBlur={checkOnBlur}
                 value={state.password.value}
                 disabled={isLoading}
-              />
+              /> */}
 
               <FormatRules
                 condition={errors.password}
@@ -198,7 +208,15 @@ const AuthSection: React.FC = ({
             </div>
 
             <div className={style.div_login}>
-              <input
+              <InputPassword
+                name="passwordComfirmation"
+                placeholder="Password Comfirmation"
+                handleData={handleData}
+                isLoading={isLoading}
+                checkOnBlur={checkOnBlur}
+                value={state.passwordComfirmation.value}
+              />
+              {/*  <input
                 name="passwordComfirmation"
                 placeholder="Password Comfirmation"
                 className={isLoading ? style.input_wait : style.input}
@@ -207,7 +225,7 @@ const AuthSection: React.FC = ({
                 onBlur={checkOnBlur}
                 value={state.passwordComfirmation.value}
                 disabled={isLoading}
-              />
+              /> */}
               <FormatRules
                 condition={errors.passwordComfirmation}
                 type="passwordComfirmation"
@@ -266,6 +284,8 @@ const AuthSection: React.FC = ({
   );
 };
 
+
+
 const Login: React.FC = () => {
   /* set component state */
   const [styleClass, setStyleClass] = useState<string>(style.section_signup);
@@ -280,38 +300,7 @@ const Login: React.FC = () => {
     username: { value: '', error: '' },
   });
 
-  const [validateSchema, setValidateSchema] = useState<
-    Record<KeyType, validationInterface>
-  >({
-    email: {
-      required: true,
-      validator: {
-        regexp: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-        error: 'The email format is wrong',
-      },
-    },
-    password: {
-      required: true,
-      validator: {
-        regexp: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-        error: 'The password format is wrong',
-      },
-    },
-    passwordComfirmation: {
-      required: true,
-      validator: {
-        regexp: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-        error: 'The password format is wrong',
-      },
-    },
-    username: {
-      required: true,
-      validator: {
-        regexp: /^[a-zA-Z]+$/,
-        error: 'The username format is wrong',
-      },
-    },
-  });
+  const [validateSchema, setValidateSchema] = useState<Record<KeyType, validationInterface>>(singUpValidator);
 
   /* Intantiate hook's methods and variables */
   const {
@@ -339,36 +328,7 @@ const Login: React.FC = () => {
     await Promise.all([
       setStyleClass(style.section_signup),
       setCurrentSection('Sign Up'),
-      setValidateSchema({
-        email: {
-          required: true,
-          validator: {
-            regexp: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-            error: 'Invalid email format.',
-          },
-        },
-        password: {
-          required: true,
-          validator: {
-            regexp: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-            error: 'Invalid password format.',
-          },
-        },
-        passwordComfirmation: {
-          required: true,
-          validator: {
-            regexp: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-            error: 'The password format is wrong',
-          },
-        },
-        username: {
-          required: true,
-          validator: {
-            regexp: /^[a-zA-Z]+$/,
-            error: 'Invalid username format.',
-          },
-        },
-      }),
+      setValidateSchema(singUpValidator),
       setStateSchema({
         email: { value: '', error: '' },
         password: { value: '', error: '' },
@@ -383,22 +343,7 @@ const Login: React.FC = () => {
     await Promise.all([
       setStyleClass(style.section_login),
       setCurrentSection('Log In'),
-      setValidateSchema({
-        email: {
-          required: true,
-          validator: {
-            regexp: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-            error: 'Invalid email format.',
-          },
-        },
-        password: {
-          required: true,
-          validator: {
-            regexp: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/,
-            error: 'Invalid password format.',
-          },
-        },
-      }),
+      setValidateSchema(loginValidator),
       setStateSchema({
         email: { value: '', error: '' },
         password: { value: '', error: '' },
@@ -413,15 +358,7 @@ const Login: React.FC = () => {
     await Promise.all([
       setStyleClass(style.section_reset),
       setCurrentSection('Reset'),
-      setValidateSchema({
-        email: {
-          required: true,
-          validator: {
-            regexp: /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-            error: 'Invalid email format.',
-          },
-        },
-      }),
+      setValidateSchema(resetValidator),
       setStateSchema({
         email: { value: '', error: '' },
         password: { value: '', error: '' },
@@ -476,8 +413,8 @@ const Login: React.FC = () => {
           errorsRequest={errorsRequest}
         />
       ) : (
-        <SignUpSecondModule />
-      )}
+          <SignUpSecondModule />
+        )}
     </div>
   );
 };

@@ -28,6 +28,7 @@
   font-size: 0.8rem;
   color: white;
   border-style: none;
+  outline: none;
 }
 
 .button_process {
@@ -46,6 +47,8 @@
   justify-content: center;
   color: white;
   border-style: none;
+  outline: none;
+
 }
 
 /* 2) Inputs */
@@ -91,20 +94,21 @@
   outline: none;
   border-style: none;
   border: 1px solid rgba(194, 191, 191, 0.609);
-  border-radius: 7px;
+  border-radius: 10px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   text-indent: 15px;
+  border:1px solid #E1E4E8;
+
 }
 
 .input_large:focus {
-  border-color: rgba(52, 158, 172, 0.644);
-  background: rgba(52, 158, 172, 0.05);
-  border: 1.5px solid rgb(194, 191, 191);
+  border-color: #0284FE;
+  background: rgba(73, 208, 226, 0.05);
 }
 
 .input_large:hover {
-  border-color: rgba(52, 158, 172, 0.438);
+  border-color: #0284FE;
 }
 
 .input_large::placeholder {
@@ -121,7 +125,17 @@
   font-size: 0.9rem;
   color: rgb(95, 93, 93);
 }
+.label_md{
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(95, 93, 93);
+}
+.label_lg{
 
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgb(95, 93, 93);
+}
 .message_error {
   color: grey;
   position: absolute;
