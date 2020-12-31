@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Cookie from 'js-cookie';
 import { useRouter } from 'next/router';
 import { AuthRequest } from '../services/Auth.service';
 import {
@@ -141,26 +142,26 @@ export const useValidation = (
 
     const response = await AuthRequest.login(userData);
 
-  
-
     const { status, data } = response;
- 
+
     if (status === 201) {
+      /* set cookies */
+      console.log('Response Login', data);
+
+      Cookie.set('Cride.AuthToken', data.id_token);
+      Cookie.set('Cride.Access', data.access_token);
       router.push('/Home');
       return;
     } else {
-      console.log('error response', data);
       let propertyWrong = Object.keys(data)[0];
       const errorMessage = data[propertyWrong][0];
-
-     
       propertyWrong = 'password';
 
       setErrors({
         ...errors,
         password: errorMessage,
       });
-      
+
       setErrorsRequest({
         [propertyWrong]: errorMessage,
       });
@@ -170,7 +171,6 @@ export const useValidation = (
       setIsLoading(false);
       setDisable(true);
     }
- 
   }
 
   async function handleResetRequest(e) {

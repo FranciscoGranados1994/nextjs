@@ -247,7 +247,9 @@
   }
   .anchor_selected,
   .anchor {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    height: 100%;
+    
   }
   .anchor:first-child,
   .anchor_selected:first-child {
@@ -256,7 +258,7 @@
 
   .anchor:nth-child(2),
   .anchor_selected:nth-child(2) {
-    margin-left: 10%x;
+    margin-left: 14%;
   }
 
   .anchor:last-child,

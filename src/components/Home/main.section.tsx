@@ -1,9 +1,8 @@
 import React from 'react';
 import CirclesList from './circles.list';
-import UserCircles from './circles.suscription'
-import Filters from './filters'
+import UserCircles from './circles.suscription';
+import Filters from './filters';
 import style from '../../../styles/Home/mainSection.module.css';
-
 
 const MainSection: React.FC = () => {
   return (
@@ -24,7 +23,7 @@ const MainSection: React.FC = () => {
       <UserCircles />
 
       {/* filter */}
-      <Filters/>
+      <Filters />
 
       <CirclesList />
     </main>

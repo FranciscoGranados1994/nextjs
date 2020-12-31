@@ -5,21 +5,18 @@ export function useComponentVisible() {
   const [isComponentVisible, setIsComponentVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-
   const handleClickOutside = (event: Event) => {
-
-  /*    if (ref.current && ) {
+    /*    if (ref.current && ) {
             setIsComponentVisible(true);
      } */
 
-     if(!ref.current.contains(event.target as Node)){
-       // setIsComponentVisible()
-     }
+    if (!ref.current.contains(event.target as Node)) {
+      // setIsComponentVisible()
+    }
   };
 
   function setModal() {
-      setIsComponentVisible(!isComponentVisible)
-   
+    setIsComponentVisible(!isComponentVisible);
   }
 
   useEffect(() => {

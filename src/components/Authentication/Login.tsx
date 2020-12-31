@@ -11,11 +11,15 @@ import {
   KeyType,
   validationInterface,
 } from '../../Global/Types/hooks.types';
-import { loginValidator, singUpValidator, resetValidator } from '../../Global/validator'
+import {
+  loginValidator,
+  singUpValidator,
+  resetValidator,
+} from '../../Global/validator';
 /* Components */
 import Spiner from '../general/Spinner';
 import SignUpSecondModule from '../Authentication/SignupModule';
-import InputPassword from '../general/inputPassword'
+import InputPassword from '../general/inputPassword';
 
 const FormatRules: React.FC = ({
   type,
@@ -174,16 +178,6 @@ const AuthSection: React.FC = ({
                 checkOnBlur={checkOnBlur}
                 value={state.password.value}
               />
-              {/*    <input
-                name="password"
-                placeholder="Password"
-                className={isLoading ? style.input_wait : style.input}
-                onChange={handleData}
-                autoComplete="off"
-                onBlur={checkOnBlur}
-                value={state.password.value}
-                disabled={isLoading}
-              /> */}
 
               <FormatRules
                 condition={errors.password}
@@ -216,16 +210,7 @@ const AuthSection: React.FC = ({
                 checkOnBlur={checkOnBlur}
                 value={state.passwordComfirmation.value}
               />
-              {/*  <input
-                name="passwordComfirmation"
-                placeholder="Password Comfirmation"
-                className={isLoading ? style.input_wait : style.input}
-                onChange={handleData}
-                autoComplete="off"
-                onBlur={checkOnBlur}
-                value={state.passwordComfirmation.value}
-                disabled={isLoading}
-              /> */}
+
               <FormatRules
                 condition={errors.passwordComfirmation}
                 type="passwordComfirmation"
@@ -284,8 +269,6 @@ const AuthSection: React.FC = ({
   );
 };
 
-
-
 const Login: React.FC = () => {
   /* set component state */
   const [styleClass, setStyleClass] = useState<string>(style.section_signup);
@@ -300,7 +283,9 @@ const Login: React.FC = () => {
     username: { value: '', error: '' },
   });
 
-  const [validateSchema, setValidateSchema] = useState<Record<KeyType, validationInterface>>(singUpValidator);
+  const [validateSchema, setValidateSchema] = useState<
+    Record<KeyType, validationInterface>
+  >(singUpValidator);
 
   /* Intantiate hook's methods and variables */
   const {
@@ -413,8 +398,8 @@ const Login: React.FC = () => {
           errorsRequest={errorsRequest}
         />
       ) : (
-          <SignUpSecondModule />
-        )}
+        <SignUpSecondModule />
+      )}
     </div>
   );
 };

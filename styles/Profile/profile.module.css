@@ -1,28 +1,97 @@
-.main{
-    margin-top: 50px;
-    height: 90vh;
-    width: 100%;
+.main {
+  margin-top: 50px;
+  height: 90vh;
+  width: 100%;
 }
 
-.section_info{
+.section_info {
+  position: relative;
+  width: 70%;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 70px;
+}
+
+.div_edit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48%;
+  box-shadow: 0 2px 16px 0 rgba(69, 80, 206, 0.4);
+  border-radius: 15px;
+}
+.div_reputation {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 16px 0 rgba(69, 80, 206, 0.4);
+  border-radius: 15px;
+}
+.svg_image {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.input_name {
+  composes: input_large from '../General.module.css';
+}
+.input_username {
+  composes: input_large from '../General.module.css';
+}
+.textarea_bio {
+  composes: textarea_general from '../General.module.css';
+}
+.button_edit {
+  composes: button_active from '../General.module.css';
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Example */
+.div_ranking{
+    
     position: relative;
-    width: 70%;
-    height: 50%;
-    margin: auto;
+}
+.span_score{
+    position: absolute;
+    top: 45%;
+    color: black;
+    left: 28%;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.svg{
+    width: 120px;
+    height: 120px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 70px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+.stroke_1 {
+  stroke-linecap: round;
+  fill: transparent;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  transition: stroke-dasharray 1s;
+
+}
+.stroke_1_active{
+
+  stroke-dasharray: 175;
+  stroke-dashoffset: 350;
+    transition: stroke-dasharray 1s;
 }
 
-.div_edit{
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-    background: yellow;
+.stroke_2 {
+  stroke: rgba(233, 233, 233, 0.835);  
+  stroke-dasharray: 300;
+  stroke-linecap: round;
 }
-.div_reputation{
-    width: 48%;
-    display: flex;
-    flex-direction: column;
-    background: green;
+.span_rides{
+    composes: label_md from '../General.module.css';
+    margin-top: 40px;
+
 }

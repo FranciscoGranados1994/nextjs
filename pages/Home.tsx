@@ -1,6 +1,7 @@
 import React from 'react'
 import MainSection from '../src/components/Home/main.section'
 import MainContent from '../src/components/Main'
+import {privateRoute, AuthProps} from '../src/components/general/private.routes'
 
 const Home: React.FC = () => {
     return (
@@ -13,4 +14,4 @@ const Home: React.FC = () => {
     )
 }
 
-export default Home
+export default privateRoute(Home)

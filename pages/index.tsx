@@ -8,8 +8,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Cride App</title>
-        <link rel="icon" href="/favicon.ico" />
-        <script src="https://kit.fontawesome.com/fddec20652.js" crossOrigin="anonymous"></script>
+        <link rel="icon" href="/favicon.ico" /> 
       </Head>
       <main className={styles.main}>
         <Background />

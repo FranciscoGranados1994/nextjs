@@ -238,7 +238,7 @@ const BackgroundMobile: React.FC = () => {
 
 const BackGround: React.FC = () => {
   const [widthScreen, setWith] = useState<number>();
-  const [activeCarousel, setActiveCarousel] = useState<boolean>(true);
+  const [activeCarousel, setActiveCarousel] = useState<boolean>(false);
 
   useEffect(() => {
     /* display a different background according to screen resolution*/
@@ -264,7 +264,7 @@ const BackGround: React.FC = () => {
 
   return (
     <div className={style.main}>
-      {activeCarousel ? <Carousel /> : <BackgroundMobile />}
+      {activeCarousel ? null: <BackgroundMobile />}
     </div>
   );
 };

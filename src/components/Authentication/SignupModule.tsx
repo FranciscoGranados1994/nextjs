@@ -361,7 +361,6 @@ const SignUpSecondModule: React.FC = () => {
       }
     }
 
-    console.log(description);
     /* if any other value was previously typed and the actual is empty, remove the animation  */
     if (!userImage && !city && !phoneNumber && value.length === 0) {
       console.log('user data- Test textarea', city, phoneNumber, userImage);
